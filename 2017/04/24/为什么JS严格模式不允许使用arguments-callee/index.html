@@ -18,7 +18,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="自留地"/>
+      <meta property="og:title" content="为什么JS严格模式不允许使用arguments.callee?"/>
   
   <!--Open Graph Description-->
   
@@ -28,7 +28,7 @@
   <meta property="og:site_name" content="自留地"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -37,7 +37,7 @@
 
   <!-- Title -->
   
-  <title>Archives - 自留地</title>
+  <title>为什么JS严格模式不允许使用arguments.callee? - 自留地</title>
 
 
   <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
@@ -109,47 +109,61 @@
 
 
   <!-- Main Content -->
-  
-
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">Archives</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy
-          1. group site.posts by year
-          2. sort posts-in-one-year by Month and Day
-        -->
-        
-
-        
-          <h2 class="year">2017</h2>
-          <ul class="list">
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            为什么JS严格模式不允许使用arguments.callee?
             
-  <li>
-    <span class="date">
-      2017-04-24
-    </span>
-    <a href="/2017/04/24/为什么JS严格模式不允许使用arguments-callee/" class="title">
-      为什么JS严格模式不允许使用arguments.callee?
-    </a>
-  </li>
+          </h1>
+          <p class="posted-on">
+          2017-04-24
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/javascript/" rel="tag">
+                  javascript
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content">
+          <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>先说说arguments.callee是什么：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func1</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)	<span class="comment">// 打印传入func1的参数</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee === func1)  <span class="comment">// 返回true，一个函数的arguments.callee就指向它自己。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样，函数体和函数名不会耦合，如果用它写递归函数，我们就不用指明函数自身的名字了。如果之后要重构函数名什么的，也会少一点维护成本。<br>那么，为什么严格模式不让我们用它呢？</p>
+<p>## </p>
 
-  <li>
-    <span class="date">
-      2017-03-23
-    </span>
-    <a href="/2017/03/23/hello-world/" class="title">
-      Hello World
-    </a>
-  </li>
-
-
-          </ul>
-        
-      </div>
+        </div>
+      </article>
     </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+      
+        <div class="nav-next">
+          <a href="/2017/03/23/hello-world/" rel="prev">Newer Posts <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
   </div>
 </div>
 
