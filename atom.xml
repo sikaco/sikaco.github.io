@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sikaco.github.io/"/>
-  <updated>2017-04-24T06:05:42.000Z</updated>
+  <updated>2017-03-23T14:38:58.000Z</updated>
   <id>http://sikaco.github.io/</id>
   
   <author>
@@ -14,31 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>为什么JS严格模式不允许使用arguments.callee?</title>
-    <link href="http://sikaco.github.io/2017/04/24/%E4%B8%BA%E4%BB%80%E4%B9%88JS%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E4%B8%8D%E5%85%81%E8%AE%B8%E4%BD%BF%E7%94%A8arguments-callee/"/>
-    <id>http://sikaco.github.io/2017/04/24/为什么JS严格模式不允许使用arguments-callee/</id>
-    <published>2017-04-24T03:31:13.000Z</published>
-    <updated>2017-04-24T06:05:42.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>先说说arguments.callee是什么：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func1</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)	<span class="comment">// 打印传入func1的参数</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee === func1)  <span class="comment">// 返回true，一个函数的arguments.callee就指向它自己。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这样，函数体和函数名不会耦合，如果用它写递归函数，我们就不用指明函数自身的名字了。如果之后要重构函数名什么的，也会少一点维护成本。<br>那么，为什么严格模式不让我们用它呢？</p>
-<p>## </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h2&gt;&lt;p&gt;先说说arguments.callee是什么：&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;tabl
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="http://sikaco.github.io/tags/javascript/"/>
-    
-  </entry>
   
   <entry>
     <title>Hello World</title>
