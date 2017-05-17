@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/hover-min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<audio id="bgm">
+    <source src="hello%20my%20friend.mp3" type="audio/mpeg">
+    您的浏览器不支持 audio 元素。
+</audio>
+<div id="page1" class="pages">
+    <div id="startWrap">
+        <div id="startRound">
+            <span id="startButton" class="default">
+                START
+            </span>
+        </div>
+    </div>
+</div>
+<div id="page2" class="pages">
+    <div class="wrap">
+        <div id="headphone">
+            <img src="img/headphone.png">
+
+            <p>
+                Use headphones for the best experience.
+            </p>
+        </div>
+        <div id="browser">
+            <img src="img/chrome.png">
+
+            <p>
+                Suggested watching with modern browser.
+            </p>
+        </div>
+        <div id="about">
+            <span id='about_1' class="smText">我叫</span>
+            <span id='about_2' class="bgText">朱阁</span>
+            <span id='about_3' class="smText">2015年将于</span>
+            <br>
+            <span id='about_4' class="bgText">成都信息工程大学</span>
+            <br>
+            <span id='about_5' class="mdText">本科</span>
+            <span id='about_6' class="smText">毕业</span>
+            <br>
+            <span id='about_7' class="smText">我想做一个</span>
+            <span id='about_8' class="bgrText">前端工程师</span>
+        </div>
+    </div>
+</div>
+<div id="page3" class="pages">
+    <h1 id="skillTitle">SKILLS</h1>
+    <table id="skills">
+        <tbody>
+        <tr>
+            <td>Coding:</td>
+            <td>
+                <span id="codeStar">
+                    ☆☆☆☆☆
+                </span>
+                <span class="star" id="star0">★</span>
+                <span class="star" id="star1">★</span>
+                <span class="star" id="star2">★</span>
+            </td>
+        </tr>
+        <tr>
+            <td>P<span class="smText">切</span>S<span class="smText">图</span>:</td>
+            <td id="psStar">☆☆☆☆☆</td>
+        </tr>
+        <tr>
+            <td>Imagination:<br><span id="brainHole" class="smText">//脑洞</span>&nbsp;</td>
+            <td id="imageStar">☆☆☆☆☆</td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="display: none;">
+        <div>
+            <span>JavaScript:</span><div class="skillBar"></div>
+        </div>
+        <div>
+            <span>JavaScript:</span><div class="skillBar"></div>
+        </div>
+        <div>
+            <span>JavaScript:</span><div class="skillBar"></div>
+        </div>
+    </div>
+    <h1 id="projectTitle" style="display: none;">PROJECTS</h1>
+    <div style="display: none;">
+        <div>
+            <p></p>
+            <p></p>
+        </div>
+        <div>
+            <p></p>
+            <p></p>
+        </div>
+        <div>
+            <p></p>
+            <p></p>
+        </div>
+        <div>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+</div>
+<canvas id="canvas"></canvas>
+<div id="background"></div>
+<!--<canvas id="bgCanvas"></canvas>-->
+<div id="storyBindElem" style="display: none"></div>
+<script src="js/jquery-2.1.0.min.js"></script>
+<script src="js/ballPathArr.js"></script>
+<script src="js/index.js"></script>
+<script>
+    window.onload = function () {
+        $('#startButton').click(function () {
+            animation.start();
+        });
+//        canvasAnimation();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+/**
+  global
+*/
+html,
+body {
+  font-family: "Source Han Sans", Roboto, "Helvetica Neue", "Segoe UI", Verdana, Tahoma, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-weight: 300;
+  overflow: hidden;
+}
+html {
+  font-size: 20px;
+}
+body {
+  background-color: #A1E354;
+  -webkit-transition: background-color 0.7s;
+  -moz-transition: background-color 0.7s;
+  -ms-transition: background-color 0.7s;
+  -o-transition: background-color 0.7s;
+  transition: background-color 0.7s;
+}
+p {
+  margin: 0;
+}
+.size32 {
+  font-size: 1.6rem;
+}
+.size24 {
+  font-size: 1.2rem;
+}
+.size20 {
+  font-size: 1rem;
+}
+.size18 {
+  font-size: .9rem;
+}
+.size16 {
+  font-size: .8rem;
+}
+.size14 {
+  font-size: .7rem;
+}
+.size12 {
+  font-size: .6rem;
+}
+.wrap {
+  position: relative;
+  height: 200px;
+  width: 400px;
+  top: 50%;
+  left: 50%;
+  /* background-color:red; */
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+.music-vision-bar {
+  width: 24px;
+  height: 24px;
+  background-color: blue;
+  float: left;
+  margin-right: 12px;
+  border-radius: 20px;
+}
+.pageWrap {
+  height: 100%;
+  width: 500%;
+  -webkit-transition: transform .7s;
+  -moz-transition: transform .7s;
+  -ms-transition: transform .7s;
+  -o-transition: transform .7s;
+  transition: transform .7s;
+}
+.page {
+  width: 20%;
+  height: 100%;
+  overflow: hidden;
+  float: left;
+}
+.page:nth-child(1) {
+  left: 0;
+}
+.page:nth-child(2) {
+  left: 100%;
+}
+.page:nth-child(2) .page-content {
+  margin-top: 2.9rem;
+}
+.page:nth-child(3) {
+  left: 200%;
+}
+.page:nth-child(3) .page-content {
+  margin-top: 2.6rem;
+}
+.page:nth-child(4) {
+  left: 300%;
+  overflow-y: scroll;
+}
+.page:nth-child(5) {
+  left: 400%;
+}
+.resumeContent {
+  padding-top: 3.6rem;
+}
+.avatar {
+  margin-top: 3.75rem;
+  text-align: center;
+}
+.avatar img {
+  width: 7.35rem;
+}
+.infoWrap {
+  width: 66%;
+  margin: 1.1rem auto;
+}
+.contact {
+  text-align: right;
+  margin-top: 0.7rem;
+}
+.page-title {
+  font-size: 1.2rem;
+  width: 72.5%;
+  margin: 0 auto;
+  position: relative;
+  text-indent: 1rem;
+  line-height: 1.4rem;
+}
+.page-title:before {
+  content: '';
+  width: .3rem;
+  height: 1.4rem;
+  display: block;
+  background: black;
+  position: absolute;
+}
+.page-content {
+  width: 72.5%;
+  margin: 0 auto;
+  position: relative;
+}
+.workedCompany {
+  clear: both;
+  overflow: hidden;
+  padding: .6rem 0 0 .6rem;
+  margin-bottom: .4rem;
+}
+.company-logo {
+  float: left;
+  margin-right: 0.8rem;
+}
+.company-info {
+  float: left;
+}
+.company-name {
+  font-size: 1rem;
+  line-height: 1.2rem;
+}
+.company-timeRange {
+  font-size: .8rem;
+  line-height: 2rem;
+}
+.skill-block {
+  margin-bottom: 1.35rem;
+}
+.skill-content {
+  line-height: 1.2rem;
+}
+.skill-bar {
+  height: .6rem;
+  background-color: white;
+  margin-top: 0.4rem;
+  border-radius: 2rem;
+}
+.skill-bar.skillAcquired {
+  width: 80%;
+}
+.skill-bar.skillNormal {
+  width: 58%;
+}
+.projectsWrap {
+  margin-top: 2rem;
+  height: 55%;
+}
+.projects {
+  height: 100%;
+  overflow-y: scroll;
+}
+.projectScrollTips {
+  font-size: .7rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  margin-top: .7rem;
+}
+.project-block {
+  margin-bottom: 1.75rem;
+}
+.project-title {
+  font-size: 1rem;
+  font-weight: 400;
+}
+.project-subtitle {
+  font-size: .6rem;
+  margin-top: -0.2rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+.project-spot {
+  font-size: .7rem;
+  margin-top: 0.15rem;
+}
+.project-role {
+  font-size: .7rem;
+  text-align: right;
+  font-weight: 400;
+}
+.project-timeRange {
+  font-size: .7rem;
+  text-align: right;
+}
+hr {
+  border: none;
+  border-top: solid 1px rgba(255, 255, 255, 0.5);
+  width: 3.85rem;
+  margin: 0 auto 1.4rem;
+  bottom: .7rem;
+}
+.myInteresting {
+  margin: 3.1rem auto 0;
+  font-size: 1.2rem;
+  padding-left: 1rem;
+  line-height: 2.5rem;
+  letter-spacing: .03rem;
+}
+.star {
+  width: 5.1rem;
+  margin: 1.4rem auto;
+}
+.star img {
+  width: 100%;
+}
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 18px;
+  }
+  .page:nth-child(2) .page-content {
+    width: 250px;
+  }
+}
+@media screen and (min-width: 600px) {
+  html {
+    font-size: 22px;
+  }
+  .myInteresting {
+    width: 12rem;
+    margin-bottom: 3.5rem;
+  }
+}
