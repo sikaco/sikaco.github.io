@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>自留地</title>
+  <subtitle>a simple place</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://sikaco.github.io/"/>
+  <updated>2017-05-08T09:33:05.000Z</updated>
+  <id>http://sikaco.github.io/</id>
+  
+  <author>
+    <name>sikaco</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React 中 this 的 5 种写法</title>
+    <link href="http://sikaco.github.io/2017/05/08/React-%E4%B8%AD-this-%E7%9A%84-5-%E7%A7%8D%E5%86%99%E6%B3%95/"/>
+    <id>http://sikaco.github.io/2017/05/08/React-中-this-的-5-种写法/</id>
+    <published>2017-05-08T09:12:52.000Z</published>
+    <updated>2017-05-08T09:33:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>你可知道“回”字的四种写法么 – 孔乙己</p>
+</blockquote>
+<p>不要说我标题党，我只是写这篇东西的时候突然想到这个梗。（笑）</p>
+<p>最近“复习” React 时突然想到了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;你可知道“回”字的四种写法么 – 孔乙己&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;不要说我标题党，我只是写这篇东西的时候突然想到这个梗。（笑）&lt;/p&gt;
+&lt;p&gt;最近“复习” React 时突然想到了&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="React" scheme="http://sikaco.github.io/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS循环和循环展开的性能比较</title>
+    <link href="http://sikaco.github.io/2017/05/05/JS%E5%BE%AA%E7%8E%AF%E5%92%8C%E5%BE%AA%E7%8E%AF%E5%B1%95%E5%BC%80%E7%9A%84%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83/"/>
+    <id>http://sikaco.github.io/2017/05/05/JS循环和循环展开的性能比较/</id>
+    <published>2017-05-05T03:07:56.000Z</published>
+    <updated>2017-05-05T03:07:56.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于 HTTP 200(from cache) 和 304</title>
+    <link href="http://sikaco.github.io/2017/04/26/Http-200-from-cache-%E5%92%8C-304/"/>
+    <id>http://sikaco.github.io/2017/04/26/Http-200-from-cache-和-304/</id>
+    <published>2017-04-26T06:21:39.000Z</published>
+    <updated>2017-04-26T06:25:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>## </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;## &lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>为什么JS严格模式不允许使用arguments.callee?</title>
+    <link href="http://sikaco.github.io/2017/04/24/%E4%B8%BA%E4%BB%80%E4%B9%88JS%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E4%B8%8D%E5%85%81%E8%AE%B8%E4%BD%BF%E7%94%A8arguments-callee/"/>
+    <id>http://sikaco.github.io/2017/04/24/为什么JS严格模式不允许使用arguments-callee/</id>
+    <published>2017-04-24T03:31:13.000Z</published>
+    <updated>2017-04-25T17:30:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h2><p>早期版本的JavaScript（ES3及之前版本）不支持具名函数，函数都是没有名字的。这就造成一个问题，我们没法写递归：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// This snippet will work:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> (!(n&gt;<span class="number">1</span>))? <span class="number">1</span> : factorial(n<span class="number">-1</span>)*n;</div><div class="line">&#125;</div><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>].map(factorial);</div><div class="line"></div><div class="line"><span class="comment">// But this snippet will not:</span></div><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>].map(<span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> (!(n&gt;<span class="number">1</span>))? <span class="number">1</span> : <span class="comment">/* what goes here? */</span> (n<span class="number">-1</span>)*n;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>于是为了解决这个问题，出现了<code>arguments.calle</code>这样一个 work around:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>].map(<span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> (!(n&gt;<span class="number">1</span>))? <span class="number">1</span> : <span class="built_in">arguments</span>.callee(n<span class="number">-1</span>)*n;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>一个函数的<code>arguments.callee</code>指向它自己，因此下面的代码执行时会打印<code>true</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func1</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee === func1)  <span class="comment">// true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样，哪怕函数没有名字，我们也能写递归了。即便后来函数有了名字，用<code>arguments.callee</code>也有它的好处：<strong>函数体内容和函数名不耦合</strong>，同时可以减少重构时的成本。</p>
+<p>那么，为什么严格模式不让我们用它呢？</p>
+<h2 id="arguments-callee-的缺点"><a href="#arguments-callee-的缺点" class="headerlink" title="arguments.callee 的缺点"></a>arguments.callee 的缺点</h2><p>具体来说有以下几点：</p>
+<h3 id="性能问题"><a href="#性能问题" class="headerlink" title="性能问题"></a>性能问题</h3><ol>
+<li>因为<code>arguments.callee</code>需要在运行时才能获取到目标函数，所以它会让编译器对代码“<a href="http://stackoverflow.com/questions/103598/why-was-the-arguments-callee-caller-property-deprecated-in-javascript" target="_blank" rel="external">几乎不可以</a>”提前做函数引用优化以及尾递归优化（PS：JS的老版本是不做尾递归优化的，但是在ES6里明确规定，所有ECMAScript的实现，都必须部署“尾调用优化”。使用“严格模式”然后遵循正确的写法就可以启用它，详情请见<a href="http://es6.ruanyifeng.com/#docs/function#尾调用优化" title="尾调用优化" target="_blank" rel="external">这里</a>）。</li>
+<li>访问<code>arguments object</code>本身的性能开销巨大</li>
+</ol>
+<h3 id="关于-this"><a href="#关于-this" class="headerlink" title="关于 this"></a>关于 this</h3><p>递归调用会得到一个不同的this，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> global = <span class="keyword">this</span>;</div><div class="line"><span class="keyword">var</span> sillyFunction = <span class="function"><span class="keyword">function</span> (<span class="params">recursed</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!recursed)</div><div class="line">    <span class="keyword">return</span> <span class="built_in">arguments</span>.callee(<span class="literal">true</span>);</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">this</span> !== global)</div><div class="line">    alert(<span class="string">"This is: "</span> + <span class="keyword">this</span>);</div><div class="line">  <span class="keyword">else</span></div><div class="line">    alert(<span class="string">"This is the global"</span>);</div><div class="line">&#125;</div><div class="line">sillyFunction();</div></pre></td></tr></table></figure></p>
+<p>最外层的<code>sillyFunction</code>是一个全局的函数，其<code>this</code>等于<code>global</code>。但是以<code>arguments.callee</code>方式调用的函数则是<code>arguments</code>的属性，所以其<code>this</code>等于<code>arguments</code>。</p>
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><p>那么如果不用<code>arguments.callee</code>，也想达到函数体与函数名解耦的效果应该如何做呢？这里有一个好方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> factorial=(<span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(n&lt;=<span class="number">1</span>)&#123;</div><div class="line">      <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">  &#125;<span class="keyword">else</span>&#123;</div><div class="line">      <span class="keyword">return</span> n*f(n<span class="number">-1</span>);</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>这个函数本身是有名字的，名字是<code>f</code>，哪怕它赋值给了<code>factorial</code>，它也还叫<code>f</code>。而且不用担心这个“真正的”函数名污染全局环境。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(factorial.name) === <span class="string">"f"</span>	<span class="comment">// true</span></div><div class="line"><span class="keyword">typeof</span> f	<span class="comment">// "undefined"</span></div></pre></td></tr></table></figure></p>
+<p>所以下面的情况就可以正常调用了，是不是很神奇！<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> anotherF=factorial;</div><div class="line">factorial=<span class="literal">null</span>;</div><div class="line"><span class="built_in">console</span>.log(anotherF(<span class="number">2</span>));</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;历史&quot;&gt;&lt;a href=&quot;#历史&quot; class=&quot;headerlink&quot; title=&quot;历史&quot;&gt;&lt;/a&gt;历史&lt;/h2&gt;&lt;p&gt;早期版本的JavaScript（ES3及之前版本）不支持具名函数，函数都是没有名字的。这就造成一个问题，我们没法写递归：&lt;br&gt;&lt;figur
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://sikaco.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+</feed>

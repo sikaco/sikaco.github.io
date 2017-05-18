@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+        }
+
+        #midPoint, #coord, #fps {
+            z-index: 1;
+            color: #ffffff;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #coord {
+            top: 15px;
+        }
+        #fps {
+            top: 30px;
+        }
+        #run {
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<div id="midPoint"></div>
+<div id="coord"></div>
+<div id="fps"></div>
+<button id="run">RUN</button>
+<script src="../js/ballPathArr.js"></script>
+<script>
+    var lastTime = (+new Date);
+    var fpsElem = document.getElementById('fps');
+    function calculateFps() {
+        var now = (+new Date),
+                fps = 1000 / (now - lastTime);
+        lastTime = now;
+        fpsElem.innerText = 'fps:' + fps;
+    }
+//    setInterval(calculateFps, 1000);
+
+    var W = window.innerWidth, H = window.innerHeight;
+    var midP = document.getElementById('midPoint');
+    midP.innerText = W/2 + ', ' + H;
+
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    //Make the canvas occupy the full page
+    canvas.width = W;
+    canvas.height = H;
+
+    var coord = document.getElementById('coord');
+    var mouse = {};
+
+    //finally some mouse tracking
+    canvas.addEventListener('mousemove', track_mouse, false);
+    function track_mouse(e) {
+        //since the canvas = full page the position of the mouse
+        //relative to the document will suffice
+        coord.innerText =  (mouse.x = e.pageX) + ', ' + (mouse.y = e.pageY);
+    }
+
+//    var path = [];
+    var path = ballPath;    //TODO:DEBUG
+
+    canvas.addEventListener('click', markPoint, false);
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, W, H);
+    function markPoint(e) {
+        var p = {
+            x: e.pageX,
+            y: e.pageY
+        };
+
+//        console.log(path);
+        if (path.length == 0) {
+            runPoint.x = p.x;
+            runPoint.y = p.y;
+        }
+        if (path.length > 0) {
+            var preP = path[path.length - 1];
+            ctx.beginPath();
+            ctx.strokeStyle = 'blue';
+            ctx.moveTo(preP.x, preP.y);
+            ctx.lineTo(p.x, p.y);
+            ctx.stroke();
+        }
+
+        ctx.beginPath();
+        ctx.fillStyle = 'red';
+        ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.save();
+        path.push(p);
+    }
+
+
+    var runPoint = {
+        'x': 0,
+        'y': 0,
+        'vX': 0,
+        'xY': 0,
+        'flag': false
+    };
+    function runPointToggle() {
+        if (!runPoint.flag) {
+            runPointDraw();
+        } else {
+            stopRunPointDraw();
+        }
+        runPoint.flag = !runPoint.flag;
+    }
+
+    var rpIntervalId = 0;   //run point interval id
+    var rpIndex = 0;
+    var pathUpdateTime = 500;   //unit is ms
+    var times = pathUpdateTime / 16.7;
+    function runPointDraw() {
+        rpCoordUpdate();
+        rpIntervalId = setInterval(rpCoordUpdate, pathUpdateTime);
+
+        runPointRender();
+    }
+    function rpCoordUpdate() {
+        if (rpIndex < path.length - 1) {
+            var distCoord = path[++rpIndex];
+            runPoint.vX = (distCoord.x - runPoint.x) / times;
+            runPoint.vY = (distCoord.y - runPoint.y) / times;
+            console.log(distCoord);
+        } else {
+            runPoint.vX = runPoint.vY = 0;
+            clearInterval(rpIntervalId);
+            cancelAnimationFrame(runPointRender);
+        }
+    }
+    function runPointRender() {
+//        ctx.fillStyle = 'black';
+//        ctx.fillRect(0, 0, W, H);
+        ctx.restore();
+
+        ctx.beginPath();
+        ctx.fillStyle = 'green';
+        ctx.arc(runPoint.x, runPoint.y, 3, 0, Math.PI * 2);
+        ctx.fill();
+
+        runPoint.x += runPoint.vX;
+        runPoint.y += runPoint.vY;
+        requestAnimationFrame(runPointRender);
+    }
+
+    function stopRunPointDraw() {
+//        ctx.fillStyle = 'black';
+//        ctx.fillRect(0, 0, W, H);
+//        ctx.restore();
+        runPoint.vX = runPoint.vY = 0;
+        cancelAnimationFrame(runPointRender);
+        clearInterval(rpIntervalId);
+    }
+
+    function outPath(x, y) {
+        var spDiff = {x:0, y:0};
+        if (arguments.length != 0) {
+            spDiff.x = path[0].x - x;
+            spDiff.y = path[0].y - y;
+        }
+
+        var str = [];
+        for (var i = 1, len = path.length; i < len; i++) {
+            var p = path[i];
+            var subArr = [];
+//            for (var j in p) {
+//                if (p.hasOwnProperty(j)) {
+//                    if (j === 'x' || j === 'y') {
+//                        var item = j + ':' + (p[j] - spDiff[j]);
+//                    }
+//                    subArr.push(item);
+//                }
+//            }
+            var item = 'x:' + (p.x - spDiff.x);
+            subArr.push(item);
+            item = 'y:' + (p.y - spDiff.y);
+            subArr.push(item);
+            str.push('{' + subArr.join(',') + '}');
+        }
+//        str = '[' + str + ']';
+        str = str.join(',');
+        console.log(str);
+    }
+
+
+    function pathExec(type, param) {
+        switch (type) {
+            case 'x':
+            case 'y':
+                for (var i = 0, len = path.length; i < len; i++) {
+                    path[i][type] = param;
+                }
+                break;
+        }
+    }
+
+    var resultPath = [];
+    function getLinerPath(x0, y0, x1, y1, pNum) {
+        resultPath = [];
+        var xDiff = x1 - x0;
+        var yDiff = y1 - y0;
+        for (var i = 0; i < pNum; i++) {
+            resultPath.push({
+                x: x0 + xDiff * i,
+                y: y0 + yDiff * i
+            })
+        }
+        return JSON.stringify(resultPath);
+    }
+
+    var run = document.getElementById('run');
+    run.onclick = runPointToggle;
+</script>
+</body>
+</html>
